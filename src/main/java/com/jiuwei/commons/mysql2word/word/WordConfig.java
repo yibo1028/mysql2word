@@ -4,7 +4,7 @@ import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 
 public abstract class WordConfig {
 	//注释那一列的宽度
-	protected final int ROW_CEL_WIDTH_REMARK = 3000;// 注释那一列的宽度
+	protected final int ROW_CEL_WIDTH_REMARK = 4000;// 注释那一列的宽度
 	
 	// 表格第一行相关设置
 	protected final String FIRST_ROW_COLOR = "C3BED4";// 表格第一行背景色
