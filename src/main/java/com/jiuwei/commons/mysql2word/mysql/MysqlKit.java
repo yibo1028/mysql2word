@@ -25,7 +25,7 @@ public class MysqlKit extends MysqlConfig {
 	private static void initTableInfos() {
 		tableList = new ArrayList<MysqlTable>();
 		try {
-			ResultSet tableResultSet = dbmd.getTables(null, "%", "t_loan%", new String[] { "TABLE" });// 表数据集
+			ResultSet tableResultSet = dbmd.getTables(null, "%", "%", new String[] { "TABLE" });// 表数据集
 			MysqlTable mysqlTable = null;
 
 			while (tableResultSet.next()) {
@@ -36,6 +36,20 @@ public class MysqlKit extends MysqlConfig {
 				System.out.println(" 注释：" + tableResultSet.getString(5));
 
 				String tableName = tableResultSet.getString("TABLE_NAME");
+				if(tableName != null) {
+					  if (tableName.indexOf("cms_") != -1 || tableName.indexOf("test_") != -1
+								|| tableName.indexOf("oa_") != -1
+								|| tableName.indexOf("icp_") != -1
+//								|| tableName.indexOf("ACT_") != -1
+//								|| tableName.indexOf("t_loan") != -1
+//								|| tableName.indexOf("t_finance") != -1
+//								|| tableName.indexOf("sys_") != -1
+//								|| tableName.indexOf("QRTZ_") != -1
+//								|| tableName.indexOf("gen_") != -1
+								) {
+							continue;
+					  }
+				}
 				String REMARKS = tableResultSet.getString("REMARKS");
 				if (!StringUtils.isNullOrEmpty(tableName)) {
 					ResultSet rs = dbmd.getColumns(null, "%", tableName, "%");

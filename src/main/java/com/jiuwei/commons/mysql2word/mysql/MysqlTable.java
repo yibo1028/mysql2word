@@ -23,7 +23,7 @@ public class MysqlTable {
 
 	public void addSingleField(String fieldValue) {
 		if (cursor == fieldCount) {
-			addRowField(fieldValues);
+//			addRowField(fieldValues);
 			fieldValues = new String[fieldCount];
 			cursor = 0;
 		}
@@ -34,6 +34,9 @@ public class MysqlTable {
 		} else {
 			fieldValues[cursor] = fieldValue;
 			cursor += 1;
+		}
+		if (cursor == (fieldCount - 1)) {
+			addRowField(fieldValues);
 		}
 	}
 
